@@ -2,7 +2,6 @@ package br.com.nasa.robot;
 
 import br.com.nasa.robot.service.RobotService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class RobotApplicationTests {
 
-    @Autowired
     private RobotService robotService;
 
     @Test

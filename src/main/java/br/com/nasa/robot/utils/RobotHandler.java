@@ -12,10 +12,10 @@ public class RobotHandler {
     public static final char TURN_LEFT = 'L';
     public static final char TURN_RIGHT = 'R';
 
-    public static final String ORIENTATION_WEST = "W";
-    public static final String ORIENTATION_NORTH = "N";
-    public static final String ORIENTATION_SOUTH = "S";
-    public static final String ORIENTATION_EAST = "E";
+    public static final char DIRECTION_WEST = 'W';
+    public static final char DIRECTION_NORTH = 'N';
+    public static final char DIRECTION_SOUTH = 'S';
+    public static final char DIRECTION_EAST = 'E';
 
     public static final Formatter FORMATTER = new Formatter();
 }
