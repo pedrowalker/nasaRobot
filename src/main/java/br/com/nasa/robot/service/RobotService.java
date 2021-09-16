@@ -24,10 +24,9 @@ public class RobotService {
     private RobotMoviment robotMoviment;
 
     public ResponseEntity<String> doMoviment(String moviment) {
-        Robot robot = new Robot();
-        ResponseEntity<String> responseEntity;
-        changeRobotMoviment(robot);
         try {
+            Robot robot = new Robot();
+            changeRobotMoviment(robot);
             moviment.chars().mapToObj(c -> (char) c)
                     .forEach(character -> {
                         switch (character) {
@@ -44,11 +43,10 @@ public class RobotService {
                                 throw new InvalidMovimentException();
                         }
                     });
-            responseEntity = new ResponseEntity<>(retrievePosition(robot), HttpStatus.OK);
+            return new ResponseEntity<>(retrievePosition(robot), HttpStatus.OK);
         } catch (InvalidMovimentException e) {
-            responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return responseEntity;
     }
 
     private void changeRobotMoviment(Robot robot) {
