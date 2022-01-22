@@ -4,10 +4,9 @@ import br.com.nasa.robot.service.RobotService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 class RobotApplicationTests {
@@ -17,21 +16,20 @@ class RobotApplicationTests {
 
     @Test
     void perfectCase() {
-        ResponseEntity<String> response = robotService.doMoviment("MMRMMRMM");
-        assertEquals("(2, 0, S)", response.getBody());
-        assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
+        String response = robotService.doMoviment("MMRMMRMM");
+        assertEquals("(2, 0, S)", response);
     }
 
     @Test
     void invalidCommand() {
-        ResponseEntity<String> response = robotService.doMoviment("AAA");
-        assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatusCodeValue());
+        String response = robotService.doMoviment("AAA");
+        assertNull(response);
     }
 
     @Test
     void invalidPosition() {
-        ResponseEntity<String> response = robotService.doMoviment("MMMMMMMMMMMMMMMMMMMMMMMM");
-        assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatusCodeValue());
+        String response = robotService.doMoviment("MMMMMMMMMMMMMMMMMMMMMMMM");
+        assertNull(response);
     }
 
 }
